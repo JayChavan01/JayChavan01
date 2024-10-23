@@ -25,5 +25,6 @@
 </div>
 
 <div align="center">
+  
   ![snake gif](https://github.com/JayChavan01/JayChavan01/blob/output/github-snake-dark.svg)
 </div>
