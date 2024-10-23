@@ -23,3 +23,7 @@
 <div align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=jaychavan01&locale=en&mode=daily&theme=dark&hide_border=false&border_radius=5&order=3" height="220" alt="streak graph"  />
 </div>
+
+<div align="center">
+  ![snake gif](https://github.com/JayChavan01/JayChavan01/blob/output/github-snake-dark.svg)
+</div>
