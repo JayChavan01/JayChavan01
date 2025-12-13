@@ -1,4 +1,4 @@
-<h1 align="center">Hi 👋, I'm Jay Jitesh Chavan</h1>
+<!-- <h1 align="center">Hi 👋, I'm Jay Jitesh Chavan</h1>
 <h3 align="center">A passionate Mechanical Engineer And Data Scientist</h3>
 
 - 🌱 I’m currently learning **Machine Learning**
@@ -27,4 +27,4 @@
 <div align="center">
   
   ![snake gif](https://github.com/JayChavan01/JayChavan01/blob/output/github-snake-dark.svg)
-</div>
+</div> -->
