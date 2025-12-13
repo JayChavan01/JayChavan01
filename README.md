@@ -37,768 +37,173 @@
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jay Jitesh Chavan - GitHub Profile</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #7c3aed;
-            --accent: #06b6d4;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --success: #10b981;
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-            --gradient-accent: linear-gradient(135deg, var(--accent), var(--primary));
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #0f172a;
-            color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 20%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header Styles */
-        .header {
-            text-align: center;
-            padding: 60px 0 40px;
-            position: relative;
-        }
-        
-        .animated-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            position: relative;
-            display: inline-block;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        .animated-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { width: 150px; opacity: 1; }
-            50% { width: 180px; opacity: 0.7; }
-        }
-        
-        .subtitle {
-            font-size: 1.5rem;
-            color: var(--gray);
-            margin-bottom: 30px;
-            font-weight: 400;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .subtitle::before, .subtitle::after {
-            content: '✦';
-            color: var(--accent);
-            margin: 0 15px;
-            animation: spin 4s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Card Styles */
-        .card {
-            background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-            border-color: rgba(37, 99, 235, 0.2);
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-        
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .card-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--light);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .card-title i {
-            color: var(--accent);
-        }
-        
-        /* About Section */
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            align-items: center;
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .highlight {
-            color: var(--accent);
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(6, 182, 212, 0.3);
-            z-index: -1;
-            border-radius: 2px;
-        }
-        
-        .contact-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 28px;
-            background: var(--gradient);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
-        }
-        
-        .contact-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.7s;
-        }
-        
-        .contact-button:hover::after {
-            left: 100%;
-        }
-        
-        /* Social Links */
-        .social-links {
-            display: flex;
-            gap: 20px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(30, 41, 59, 0.8);
-            color: var(--light);
-            font-size: 1.3rem;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 1;
-        }
-        
-        .social-link i {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .social-link:hover {
-            transform: translateY(-5px) scale(1.1);
-            border-color: transparent;
-        }
-        
-        .social-link:hover::before {
-            opacity: 1;
-        }
-        
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .skill-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px 15px;
-            background: rgba(15, 23, 42, 0.7);
-            border-radius: 15px;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .skill-item:hover {
-            transform: translateY(-8px) scale(1.05);
-            background: rgba(37, 99, 235, 0.1);
-            border-color: rgba(37, 99, 235, 0.3);
-        }
-        
-        .skill-item i, .skill-item img {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--accent);
-        }
-        
-        .skill-item span {
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-align: center;
-        }
-        
-        /* Stats Section */
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-            min-width: 150px;
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1;
-            margin-bottom: 10px;
-            display: block;
-        }
-        
-        .stat-label {
-            color: var(--gray);
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        
-        /* Snake Animation Container */
-        .snake-container {
-            margin-top: 40px;
-            background: rgba(15, 23, 42, 0.7);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .snake-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-        }
-        
-        .snake-animation {
-            height: 200px;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.2);
-        }
-        
-        .snake-path {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-        
-        .snake {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background: var(--gradient-accent);
-            border-radius: 50%;
-            filter: blur(1px);
-            animation: snakeMove 20s linear infinite;
-            box-shadow: 0 0 20px var(--accent);
-        }
-        
-        .snake-segment {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: var(--gradient);
-            border-radius: 50%;
-            opacity: 0.7;
-        }
-        
-        @keyframes snakeMove {
-            0% { 
-                top: 0; 
-                left: 0; 
-                transform: scale(1);
-            }
-            25% { 
-                top: 0; 
-                left: calc(100% - 40px); 
-                transform: scale(1.1);
-            }
-            50% { 
-                top: calc(100% - 40px); 
-                left: calc(100% - 40px); 
-                transform: scale(1);
-            }
-            75% { 
-                top: calc(100% - 40px); 
-                left: 0; 
-                transform: scale(1.1);
-            }
-            100% { 
-                top: 0; 
-                left: 0; 
-                transform: scale(1);
-            }
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 40px 0;
-            color: var(--gray);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 40px;
-        }
-        
-        .pulse {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: var(--success);
-            border-radius: 50%;
-            margin-right: 8px;
-            animation: pulseDot 1.5s infinite;
-        }
-        
-        @keyframes pulseDot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .animated-title {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .card-title {
-                font-size: 1.5rem;
-            }
-            
-            .skills-grid {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            }
-            
-            .stat-item {
-                min-width: 120px;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-        }
-        
-        /* Floating Background Elements */
-        .floating-element {
-            position: fixed;
-            border-radius: 50%;
-            background: var(--gradient);
-            opacity: 0.05;
-            z-index: -1;
-            animation: floatElement 20s infinite linear;
-        }
-        
-        .floating-element:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            left: 5%;
-            animation-duration: 25s;
-        }
-        
-        .floating-element:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            top: 60%;
-            right: 10%;
-            animation-duration: 20s;
-            background: var(--gradient-accent);
-        }
-        
-        .floating-element:nth-child(3) {
-            width: 150px;
-            height: 150px;
-            bottom: 20%;
-            left: 20%;
-            animation-duration: 30s;
-        }
-        
-        @keyframes floatElement {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            33% { transform: translateY(-30px) rotate(120deg); }
-            66% { transform: translateY(20px) rotate(240deg); }
-        }
-        
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-</head>
-<body>
-    <!-- Floating Background Elements -->
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-    <div class="floating-element"></div>
-    
-    <div class="container">
-        <!-- Header -->
-        <header class="header fade-in">
-            <h1 class="animated-title">Hi 👋, I'm Jay Jitesh Chavan</h1>
-            <h2 class="subtitle">A passionate Mechanical Engineer And Data Scientist</h2>
-        </header>
-        
-        <!-- About Section -->
-        <section class="card fade-in">
-            <h2 class="card-title"><i class="fas fa-user"></i> About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I'm a passionate <span class="highlight">Mechanical Engineer</span> with a strong interest in <span class="highlight">Data Science</span> and <span class="highlight">Machine Learning</span>. Currently expanding my knowledge in advanced ML techniques and seeking opportunities as a <span class="highlight">Data Analyst</span>.</p>
-                    
-                    <p>I'm looking for a company that values innovation and data-driven decision making, where I can contribute my analytical skills and engineering mindset.</p>
-                    
-                    <p>All of my projects are available on my portfolio website:</p>
-                    
-                    <a href="https://jay-chavan-portfolio.netlify.app/" target="_blank" class="contact-button">
-                        <i class="fas fa-external-link-alt"></i> View My Portfolio
-                    </a>
-                    
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/jay-chavan-b9b26522a/" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://www.instagram.com/the_jay_chavan/" target="_blank" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://jay-chavan-portfolio.netlify.app/" target="_blank" class="social-link">
-                            <i class="fas fa-rss"></i>
-                        </a>
-                        <a href="mailto:jay01chavan@gmail.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Skills Section -->
-        <section class="card fade-in">
-            <h2 class="card-title"><i class="fas fa-code"></i> Languages & Tools</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <i class="fab fa-python"></i>
-                    <span>Python</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-database"></i>
-                    <span>SQL</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fab fa-js"></i>
-                    <span>JavaScript</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fab fa-html5"></i>
-                    <span>HTML5</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fab fa-css3-alt"></i>
-                    <span>CSS3</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Pandas</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-brain"></i>
-                    <span>Scikit-learn</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-project-diagram"></i>
-                    <span>TensorFlow</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-eye"></i>
-                    <span>OpenCV</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-cube"></i>
-                    <span>Matlab</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fab fa-java"></i>
-                    <span>Java</span>
-                </div>
-                <div class="skill-item">
-                    <i class="fab fa-linux"></i>
-                    <span>Linux</span>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Stats Section -->
-        <section class="card fade-in">
-            <h2 class="card-title"><i class="fas fa-chart-bar"></i> GitHub Stats</h2>
-            <div class="stats-container">
-                <div class="stat-item">
-                    <span class="stat-number" id="repos">50+</span>
-                    <span class="stat-label">Projects</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="commits">500+</span>
-                    <span class="stat-label">Commits</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="contributions">100+</span>
-                    <span class="stat-label">Contributions</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="experience">2+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-            </div>
-            
-            <div class="snake-container">
-                <h3 class="snake-title">GitHub Contribution Snake</h3>
-                <div class="snake-animation">
-                    <div class="snake"></div>
-                    <div class="snake-segment" style="top: 40px; left: 50px; animation-delay: 0.5s;"></div>
-                    <div class="snake-segment" style="top: 80px; left: 90px; animation-delay: 1s;"></div>
-                    <div class="snake-segment" style="top: 120px; left: 130px; animation-delay: 1.5s;"></div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Footer -->
-        <footer class="footer fade-in">
-            <p><span class="pulse"></span> Currently learning advanced Machine Learning techniques</p>
-            <p>Open to Data Analyst opportunities | Reach me at <a href="mailto:jay01chavan@gmail.com" style="color: var(--accent);">jay01chavan@gmail.com</a></p>
-            <p style="margin-top: 20px;">&copy; 2023 Jay Jitesh Chavan. All rights reserved.</p>
-        </footer>
-    </div>
-    
-    <script>
-        // Scroll animation
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        fadeElements.forEach(el => observer.observe(el));
-        
-        // Animated stats counter
-        function animateCounter(elementId, targetValue, suffix = '') {
-            const element = document.getElementById(elementId);
-            if (!element) return;
-            
-            let current = 0;
-            const increment = targetValue / 50;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= targetValue) {
-                    current = targetValue;
-                    clearInterval(timer);
-                }
-                element.textContent = Math.floor(current) + suffix;
-            }, 40);
-        }
-        
-        // Initialize counters when stats section is visible
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter('repos', 50, '+');
-                    animateCounter('commits', 500, '+');
-                    animateCounter('contributions', 100, '+');
-                    animateCounter('experience', 2, '+');
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        });
-        
-        const statsSection = document.querySelector('.stats-container');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
-        }
-        
-        // Add hover effect to skill items
-        const skillItems = document.querySelectorAll('.skill-item');
-        skillItems.forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px) scale(1.05)';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-        
-        // Add typing effect to title
-        const title = document.querySelector('.animated-title');
-        const originalText = title.textContent;
-        title.textContent = '';
-        
-        let i = 0;
-        function typeWriter() {
-            if (i < originalText.length) {
-                title.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
-        }
-        
-        // Start typing after a short delay
-        setTimeout(typeWriter, 500);
-    </script>
-</body>
-</html>
+
+
+<div align="center">
+  
+  ![Typing SVG](https://readme-typing-svg.herokuapp.com/?font=Roboto+Mono&size=40&duration=4000&pause=1000&color=06B6D4&center=true&vCenter=true&width=800&height=80&lines=Hi+👋,+I'm+Jay+Jitesh+Chavan;Mechanical+Engineer+⚙️+And+Data+Scientist+📊)
+
+  <p align="center">
+    <img src="https://komarev.com/ghpvc/?username=jaychavan01&label=Profile%20Views&color=0e75b6&style=flat" alt="jaychavan01" />
+    <img src="https://img.shields.io/github/followers/jaychavan01?label=Followers&style=social" alt="followers">
+    <img src="https://img.shields.io/github/stars/jaychavan01?label=Stars&style=social" alt="stars">
+  </p>
+</div>
+
+---
+
+## 🔥 About Me
+
+<div align="center">
+  
+  ```javascript
+  const jay = {
+    pronouns: "He" | "Him",
+    education: "Mechanical Engineering",
+    currentFocus: "Machine Learning & Data Science",
+    lookingFor: "Data Analyst Opportunities",
+    techStack: ["Python", "SQL", "Machine Learning", "Data Analysis"],
+    hobbies: ["Coding", "Engineering Projects", "Learning New Tech"],
+    contact: "jay01chavan@gmail.com"
+  };
+  ```
+</div>
+
+- 🎓 **Mechanical Engineer** passionate about **Data Science**
+- 🌱 Currently learning **Advanced Machine Learning** techniques
+- 🔭 Seeking **Data Analyst** opportunities in innovative companies
+- 📊 All my projects: [Portfolio Website](https://jay-chavan-portfolio.netlify.app/)
+- 📫 Reach me: **jay01chavan@gmail.com**
+- ⚡ Fun fact: I combine mechanical precision with data insights
+
+---
+
+## 🛠️ Tech Stack & Tools
+
+### 📊 **Data Science & ML**
+<p align="left">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas"/>
+  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy"/>
+  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-Learn"/>
+  <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow"/>
+  <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white" alt="OpenCV"/>
+  <img src="https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white" alt="Matplotlib"/>
+  <img src="https://img.shields.io/badge/Seaborn-2C8EBB?style=for-the-badge&logo=seaborn&logoColor=white" alt="Seaborn"/>
+</p>
+
+### 🗄️ **Databases**
+<p align="left">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL"/>
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB"/>
+  <img src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+  <img src="https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white" alt="MS SQL"/>
+</p>
+
+### 💻 **Programming Languages**
+<p align="left">
+  <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" alt="C++"/>
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="Java"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
+</p>
+
+### 🌐 **Web Development**
+<p align="left">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
+  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django"/>
+  <img src="https://img.shields.io/badge/Ruby%20on%20Rails-CC0000?style=for-the-badge&logo=ruby-on-rails&logoColor=white" alt="Rails"/>
+</p>
+
+### 🛠️ **Other Tools**
+<p align="left">
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux"/>
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git"/>
+  <img src="https://img.shields.io/badge/Matlab-0076A8?style=for-the-badge&logo=mathworks&logoColor=white" alt="Matlab"/>
+  <img src="https://img.shields.io/badge/Photoshop-31A8FF?style=for-the-badge&logo=adobe-photoshop&logoColor=white" alt="Photoshop"/>
+</p>
+
+---
+
+## 📊 GitHub Stats
+
+<div align="center">
+
+<!-- GitHub Stats -->
+<a href="https://github.com/anuraghazra/github-readme-stats">
+  <img height="180" src="https://github-readme-stats.vercel.app/api?username=jaychavan01&show_icons=true&theme=dark&hide_border=true&bg_color=0d1117&title_color=06B6D4&icon_color=06B6D4&text_color=ffffff" alt="Jay's GitHub Stats" />
+</a>
+<a href="https://github.com/anuraghazra/github-readme-stats">
+  <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=jaychavan01&layout=compact&theme=dark&hide_border=true&bg_color=0d1117&title_color=06B6D4&text_color=ffffff" alt="Top Languages" />
+</a>
+
+<!-- Streak Stats -->
+<a href="https://git.io/streak-stats">
+  <img height="180" src="https://streak-stats.demolab.com?user=jaychavan01&theme=dark&hide_border=true&background=0D1117&ring=06B6D4&fire=06B6D4&currStreakNum=FFFFFF&sideNums=FFFFFF&currStreakLabel=06B6D4&sideLabels=06B6D4&dates=64748B" alt="GitHub Streak" />
+</a>
+
+<!-- Activity Graph -->
+<a href="https://github.com/ashutosh00710/github-readme-activity-graph">
+  <img height="180" src="https://github-readme-activity-graph.vercel.app/graph?username=jaychavan01&theme=github-dark&bg_color=0d1117&hide_border=true&line=06B6D4&point=FFFFFF&area=true&area_color=06B6D4" alt="Activity Graph" />
+</a>
+
+</div>
+
+---
+
+## 🎯 Featured Projects
+
+### 🔧 **Mechanical + Data Science Projects**
+<table>
+<tr>
+<td width="50%">
+<h3 align="center">Predictive Maintenance System</h3>
+<div align="center">
+<a href="https://github.com/JayChavan01/Predictive-Maintenance">
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=jaychavan01&repo=Predictive-Maintenance&theme=dark&bg_color=0d1117&title_color=06B6D4&text_color=ffffff&hide_border=true" alt="Predictive Maintenance" />
+</a>
+<p>ML system for predicting equipment failures using sensor data</p>
+<p><strong>Tech:</strong> Python • Scikit-learn • Pandas • SQL</p>
+</div>
+</td>
+<td width="50%">
+<h3 align="center">Data Analysis Dashboard</h3>
+<div align="center">
+<a href="https://github.com/JayChavan01/Data-Analysis-Dashboard">
+<img src="https://github-readme-stats.vercel.app/api/pin/?username=jaychavan01&repo=Data-Analysis-Dashboard&theme=dark&bg_color=0d1117&title_color=06B6D4&text_color=ffffff&hide_border=true" alt="Data Analysis Dashboard" />
+</a>
+<p>Interactive dashboard for engineering data visualization</p>
+<p><strong>Tech:</strong> Python • Plotly • Dash • MySQL</p>
+</div>
+</td>
+</tr>
+</table>
+
+---
+
+## 🌐 Connect With Me
+
+<div align="center">
+  
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jay-chavan-b9b26522a/)
+  [![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=netlify&logoColor=white)](https://jay-chavan-portfolio.netlify.app/)
+  [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/the_jay_chavan/)
+  [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:jay01chavan@gmail.com)
+  [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/JayChavan01)
+
+</div>
+
+---
+
+<div align="center">
+  
+  ### 🎨 Snake Eating My Contributions
+  
+  ![snake gif](https://github.com/JayChavan01/JayChavan01/blob/output/github-contribution-grid-snake.svg)
+  
+  ### ⚙️ "Engineering precision meets data insights"
+  
+  <img src="https://raw.githubusercontent.com/trinib/trinib/main/.images/footer.svg" width="600" alt="Footer">
+  
+</div>
+
